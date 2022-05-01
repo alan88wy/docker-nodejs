@@ -75,3 +75,11 @@ You can also change port etc in the dev and prod file to overwrite the port in `
 #### To stop
 
 ```docker-compose down -v```
+
+#### Mongo DB
+
+Instead of using local directory, you can also use volume like ```mongo-db:/data/db``` where ```mongo-db``` is the volume name. Also add the following:
+
+```volumes:
+  - mongo-db
+```
