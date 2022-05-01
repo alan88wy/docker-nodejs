@@ -53,3 +53,25 @@ You can also build using ```docker-compose up -d --build```.
 
 The ```-build``` makes sure that everytime you run ```docker-compose``` it will rebuild the image.
 It will read the ```Dockerfile``` when doing this.
+
+## New Docker-compose file
+
+* ```docker-compose.yaml``` - shared docker compose file
+* ```docker-compose-dev.yaml``` - used for development
+* ```docker-compose-prod.yaml``` - used for production
+
+You can also change port etc in the dev and prod file to overwrite the port in ```docker-compose.yaml``` file
+
+### To run
+
+#### Development
+
+```docker-compose -f docker-compose.yaml -f docker-compose-dev.yaml up -d --build```
+
+#### Production
+
+```docker-compose -f docker-compose.yaml -f docker-compose-prod.yaml up -d --build```
+
+#### To stop
+
+```docker-compose down -v```
