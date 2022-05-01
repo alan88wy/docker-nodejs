@@ -46,3 +46,10 @@ and the run:
 ### To list volume
 
 ```docker volume ls```
+
+### Docker Compose
+
+You can also build using ```docker-compose up -d --build```.
+
+The ```-build``` makes sure that everytime you run ```docker-compose``` it will rebuild the image.
+It will read the ```Dockerfile``` when doing this.
