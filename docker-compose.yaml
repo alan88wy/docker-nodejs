@@ -17,13 +17,13 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
     networks:
-      - MONGO
+      - mongo
     volumes:
       - type: volume
-        source: MONGO_DATA
+        source: mongo_data
         target: /data/db
       - type: volume
-        source: MONGO_CONFIG
+        source: mongo_config
         target: /data/configdb
   mongo-express:
     image: mongo-express:latest
@@ -36,15 +36,15 @@ services:
     ports:
       - "0.0.0.0:8081:8081"
     networks:
-      - MONGO
+      - mongo
     depends_on:
       - mongo
 networks:
   MONGO:
-    name: MONGO
+    name: mongo
 
 volumes:
   MONGO_DATA:
-    name: MONGO_DATA
+    name: mongo_data
   MONGO_CONFIG:
-    name: MONGO_CONFIG
+    name: mongo_config
