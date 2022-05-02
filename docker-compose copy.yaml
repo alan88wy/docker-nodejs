@@ -1,23 +1,21 @@
 version: "3.8"
 services:
   node-app:
-    container_name: node-app
-    restart: always
     build: .
     ports:
       - "3000:3000"
     environment:
       - PORT=3000
-    networks:
-      - mongo
-    depends_on:
-      - mongodb
-  mongodb:
+
+  mongo:
     image: mongo
     restart: always
     container_name: mongodb
     # volumes:
     #   - ./data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
     networks:
       - mongo
     volumes:
@@ -40,7 +38,7 @@ services:
     networks:
       - mongo
     depends_on:
-      - mongodb
+      - mongo
 networks:
   mongo:
     name: mongo
