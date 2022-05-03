@@ -20,6 +20,9 @@ services:
     #   - ./data:/data/db
     networks:
       - mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
     volumes:
       - type: volume
         source: mongo_data
