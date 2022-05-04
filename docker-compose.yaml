@@ -9,7 +9,7 @@ services:
     environment:
       - PORT=3000
     networks:
-      - mongo
+      - mongonet
     depends_on:
       - mongodb
   mongodb:
@@ -19,7 +19,7 @@ services:
     # volumes:
     #   - ./data:/data/db
     networks:
-      - mongo
+      - mongonet
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
@@ -41,12 +41,20 @@ services:
     ports:
       - "0.0.0.0:8081:8081"
     networks:
-      - mongo
+      - mongonet
     depends_on:
       - mongodb
+
+  redis:
+    image: redis
+    networks:
+      - mongonet
+    # depends_on:
+    #   - mongodb
+
 networks:
-  mongo:
-    name: mongo
+  mongonet:
+    name: mongonet
 
 volumes:
   mongo_data:
